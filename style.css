@@ -118,7 +118,6 @@ h6 {
 header {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   padding: 2rem 4rem;
   position: relative;
 }
@@ -135,14 +134,13 @@ header {
 }
 
 .header-photo-container {
+  position: relative;
+}
+
+.header-photo-container img {
   height: 500px;
   width: 500px;
-  background-image: url(./images/pexels-olly-3778680.jpg);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: end;
-  justify-content: center;
+  object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -151,6 +149,9 @@ header {
   font-weight: 400;
   font-size: 3rem;
   color: white;
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
 }
 
 .header-text-container {
@@ -174,7 +175,6 @@ header {
 .header-text-container p {
   font-size: 1.4rem;
   opacity: 0.6;
-  text-align: justify;
 }
 
 .header-contact-info {
@@ -201,6 +201,7 @@ main h1 {
 .cards-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   max-width: 1000px;
 }
@@ -238,7 +239,6 @@ footer {
   background-color: rgba(8, 145, 178, 255);
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem 4rem;
   color: white;
@@ -273,10 +273,91 @@ footer {
   width: 35px;
 }
 
-.footer-photo-container {
+.footer-photo-container img {
   min-height: 300px;
   width: 500px;
-  background-image: url(./images/pexels-olly-3760263.jpg);
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    display: block; /* Remove flex or inline-block */
+
+    padding: 0;
+    padding-top: 3rem;
+    min-height: 500px;
+  }
+  .header-background {
+    height: 50%;
+  }
+  .header-photo-container img {
+    float: left;
+    width: 350px;
+    height: 350px;
+    margin: 0 1.5rem 0 4rem; /* Space between photo and text */
+    display: block;
+  }
+  .header-photo-container h1 {
+    position: absolute;
+    top: 1rem;
+    margin-left: 20rem;
+  }
+  .header-text-container {
+    display: block;
+    margin: 6rem auto;
+    padding: 4rem 2rem;
+    clear: none; /* Remove any previous clear */
+  }
+  .header-text-container h1 {
+    text-align: center;
+  }
+  .header-contact-info {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .header-background {
+    height: 50%;
+    transform: translateY(-350px) skewY(-25deg);
+  }
+
+  .header-photo-container img {
+    height: 500px;
+    width: 300px;
+    float: none;
+    margin: 0;
+  }
+  .header-photo-container h1 {
+    margin: 0;
+    font-size: 4rem;
+    top: auto;
+  }
+  .header-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 2rem;
+    box-shadow: none;
+  }
+  .header-contact-info {
+    visibility: visible;
+  }
+  .header-contact-info .icon {
+    width: 35px;
+  }
+  main {
+    padding: 2rem;
+  }
+  footer {
+    flex-wrap: wrap;
+    padding: 0;
+  }
 }
